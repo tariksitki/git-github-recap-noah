@@ -1,0 +1,460 @@
+************  Git Recap Noah Hoca
+
+# Mac kullanicilari:
+## öncelikle Homebrew paketini kuruyor
+## daha sonra brew install git komutu ile git kullanmaya basliyor
+
+
+## windows da wsl yükleyince icerisinde default olarak
+## ubuntu yüklü gelir ve bunun icerisinde de git default olarak
+## yüklü gelir.
+# eger gelmezse; su komut kullanilir:
+
+## sudo apt install git
+
+## bir seferlik tanitim ayarlari:
+
+## git config --global user.name "username"
+
+## git config --global user.email "email adress"
+
+## git config --global core.editor "Vim yada Nano"
+
+## Alternatif bir editor daha vardir.
+## tilde editor. ancak bu wsl ve klasik ubuntu da calisir
+## ancak git bash de calismaz
+
+## cünkü git bash bir isletim sistemi degildir
+
+## sudo apt install tilde
+
+## windows icin bir editor dür
+
+
+##  git --version
+
+## her defasinda token sormamasi icin kullandigimiz komut
+## git config --global credential.helper store
+
+## bu komut kullanildiginda key lerin saklandigi bir yerde 
+## bunu depolar
+# windows da kimlik bilgileri yöneticisi var. sifreler burada saklanir
+
+## token alma komutlari:
+
+## setting > developer settings > personal access tokens > generate new token
+
+
+## github'a giderek yeni bir repo acalim
+
+## github arayüzü kullanarak login.html adinda 
+## yeni bir dosya olusturalim.
+## icerisine sunu yazabiliriz  <h1> baslik </h2>
+
+
+## home directory de bir klasör olusturup icerisine girelim
+## ve buraya clole lama yapalim
+
+## git clone url
+
+
+## Not: "git remote add"  komutu sadece lokal pc mize bir uzak 
+## yani remote repo adresi ekler
+
+## "git clone"  komutu ile ise uzak repo da bulunan bir projeyi komple
+## kendi lokalimize indiririrz
+
+## clone lama yaptigimizda baska hicbir sey yapmamiza gerek yoktur
+## git init ve diger komutlar otomatik olarak github tarafindan yapilir
+
+## clone lama yönteminde bizim de az önce yaptigimiz gibi
+## proje uzak repo da baslatilir ve sonra lokal repo ya cekilir
+
+# diger bir yöntem ise sudur:
+# proje önce lokal pc mizde baslatilir ve daha sonra 
+# uzak repoya push edilir.
+## bunun icin kullanacagimiz komut ise sudur:
+
+## "git remote add origin url adress"
+
+## simdi repomuzun bulundugu klasör icerisine giris yapalim ve
+## login.html dosyasi üzerinde bir degisiklik yapalim
+
+
+
+## remote repo ile lokal repo arasinda baglanti kurmanin birden cok 
+## yöntemi vardir. ancak bunlarin arasinda en pratik olan yöntem
+## clone lama yapmaktir.
+
+
+## eger önce lokalimizde git init calistirmis isek ve daha sonra uzak repo
+## ile baglanti kurmak istiyorsak, bu durumda clone lama yapmayiz
+# bunun yerine, pull yapabiliriz yada lokal deki .git 
+## klasörünü silip direkt olarak clone lama yapabiliriz
+
+## eger pull yapmak istersek, "git remote add ....."  komutu ile önce 
+## remote repo ile baglantiyi kurmamiz gerekir
+
+
+## simdi git add . yapalim
+## alternatif git add -A 
+## yada git add dosya adi 
+
+
+## commit yapalim 
+
+## su ana kadar lokalde yaptigimiz degisiklikleri 
+## uzak repo da göremeyiz. bunun icin push yapmamiz gerekir
+
+# simdi git push 
+
+
+## register.html adinda yeni bir dosya olusturup üzerinde 
+## degisiklik yapalim
+# touch ile yada direkt editor ile acabiliriz
+
+## git add ve commit yapalim
+
+### push yapalim
+
+
+## Not:
+
+## git remote -v komutunu calistirip bir kontrol yapalim
+## eger bu komuttan sonra bos bir sonuc alirsak, bu durumda
+# uzak reponun tanimlamasini yapmamisiz demektir
+# ancak biz clone lama yaptigimiz icin otomatik oalarak geldi
+
+## bos olmasi durumunda "git remote add" komutu kullanilir 
+
+
+## clone lama yaptigimizda uzaktaki repomuzun branch'i ne ise 
+## lokalimizde de o branch olusur.
+# biz main branch den clone lama yaptik
+
+
+
+## is arkadaslarimizdan bir tanesi kendisi lokalinde bir calisma yapti
+# ve bunu uzak repomuza push etti. bunu kendi lokalimize pull edecegiz.
+## bu durumun simulesi icin github da logout.html adinda
+# yeni bir dosya olusturalim 
+
+
+
+## is arkadasimiz bu islemleri yaparken biz de lokalimizde 
+# calismaya devam ediyoruz ve account.html adinda dosya
+# olusturup üzerinde degisiklikler yapiyoruz
+
+## git add ve commit yapalim
+
+
+## simdi pull edecegiz ancak push ettigimizde ne ile karsilacagiz?
+
+## bu durumda rejected aliriz.
+## önce uzaktaki degisiklikleri pull edip daha sonra push edebiliriz
+
+
+# bu islemler icin iki ihtimalimiz vardir
+# eger önce uzak repodaki degisiklikleri görmek daha sonra cekmek istersek
+# bu durumda önce fetch daha sonra merge yapariz 
+
+# ikinci yöntem olarak da direkt olarak pull ederiz ve sonrasinda 
+# kendi degisikliklerimizi push ederiz 
+
+
+## simdi öncelikle fetch yapalim
+
+## fetch komutunda uzaktaki degisiklikler kalici olarak degil
+# gecici olarak repomuza gelir. uzak repo ile lokal repo arasindaki
+## farki detayli olarak görmek istersek:
+
+## git diff main origin/main komutunu gireriz
+# eger main den baska bir branch üzerinde isek  bu durumda bu branch'in 
+## adini gireriz 
+
+## Not: eger merge yapmazsak, birlesme olmaz. birlesme olmasini istemiyorsak ve
+## fetch ile gelen dosyalari silmek istiyorsak normal rm -rf komutlarini
+kullanabiliriz
+
+
+## eger degisiklikleri kabul ediyorsak
+# git merge yapariz 
+
+## merge komutu yazdiktan sonra default editörümüz acilir ve
+# merge islemi icin bize default bir isim verir
+# eger bu ismi degistirmek istemezsek direkt olarak
+# kaydeder ve cikariz
+
+# su an git log komutunu calistirdigimizda 
+# lokal main ile origin main 'in ayni seviyede olmadigini görecegiz.
+# cünkü biz lokalimizde yaptigimiz degisiklikleri henüz push etmedik
+# sadece uzaktaki degisiklikleri kendimize cektik
+
+# bu nedenle simdi de push yapalim 
+
+
+# simdi is arkadasimiz uzak repoya yeni bir dosya ekliyor
+# payments.html adinda github da bir dosya olusturalim 
+
+
+# simdi uzaktaki degisiklikleri pull ile cekelim
+
+## pull isleminden sonra uzakta yapilan degisiklikleri detayli 
+# olarak görebilmek icin ls -al ile kontrol edip, yeni gelen 
+# dosyalari da editörler vasitasi ile detayli inceleyebiliriz
+
+
+## simdi arkadasimizin olusturdugu payments.html dosyasinin ikinci satirinda
+# bir degisiklik yapalim. eskisi de aynen kalsin
+# bunun icin cat >> payments.html komutunu kullanalim.
+# not: cikis icin ctrl c  yapilir 
+
+
+
+# simdi add kullanmadan direkt commit yapalim 
+# git commit -am "..........."
+
+
+# push yapalim 
+
+
+## Not: vscode da close folder yaptiktan sonra cikan ana sayfada 
+# clone git repository var. Buraya tiklarsak yukarida bizden adres ister.
+# eger uzak repomuzun url adresini buraya yapistirirsak direkt olarak clone lama yapar 
+
+
+
+
+### Branch ve merge
+
+## fast forward ve 3 way merge olmak üzere iki cesit merge vardir
+
+## simdi development adinda bir branch olusturalim ve bu branch üzerinde
+# degisiklikler yapalim. ancak diger branch üzerinde bu esnada bir degisiklik olmasin 
+# ve islem sonunda fast forward merge yapalim 
+
+
+## 3 way de ise durum su sekildedir:
+## alt branch degisiklik yaptigi esnada üst branch de de degisiklikler olmustur
+# bu iki branch birlestiginde birlesim yerlerinde tüm iki branch de de
+# yapilan degisiklikleri iceren otomatik bir commit olusur
+
+
+## not: merge conflict farkli birsey dir. Bu durum iki branch de de ayni satirda degisiklik 
+# yapildigi zaman meydana gelir 
+
+
+## yani branch icin iki komut :
+
+# git branch brachname
+
+## git checkout -b branchname
+
+
+## simdi dev branch de bugs.txt adinda bir dosya 
+# olusturalim 
+
+## dosya olusturduktan sonra main branch'e gecis yapip
+# ls yaparsak, dev branch de olusturdugumuz dosya burada da 
+# görünecektir. Bunun sebebi henüz commit yapilmamis olmasidir.
+
+
+# simdi add ve commit yapalim ve daha sonra bakalim.
+
+
+### main branch de git log yaptigimizda bugs.txt dosyasi ile ilgili
+# hicbir commit görünmeyecektir. birlesme islemi gerceklesene kadar
+# herhangi birsey görünmeyecektir 
+
+###################################
+
+
+## simdi dev branch üzerindeyken
+## register.html dosyasinin ilk satirindaki yazi da 
+## bir degisiklik yapalim ve daha sonra commit yapalim 
+
+
+# simdi iki branch üzerinde merge islemi yapalim 
+
+
+## öncelikle terminal de kod bazli normal merge islemi yapalim 
+
+# main branch e geciyoruz
+## git merge development yaziyoruz
+# ayni satirlarda degisiklik oldugu icin conflict cikiyor
+# main branch de iken editör ile register dosyasini acip conflict'i 
+# gideriyoruz
+# ve daha sonra yeni bir commit yapiyoruz.
+# bundan sonra main branch de tüm güncel degisiklikler mevcut oluyor
+# ancak dev branch e gectigimizde sadece bu branch üzerinde yapilan 
+# degisiklikler mevcut olacaktir. yani merge islemi ana branch te yapildigindan 
+# alt branch de sadece kendi degisiklikleri bulunur
+
+## bu durumdan sonra istersek alt branch kalmaya devam edebilir istersek de sileriz
+
+
+###############################
+
+## simdi merge islemini farkli bir sekilde yapalim:
+
+# öncelikle dev branch'e gecerek yine register dosyasinin ilk satirinda bir degisiklik 
+# yapalim ve daha sonra commit yapalim 
+
+## simdi de dev branch'i önce uzak repo ya push edecegiz 
+## bunun icin "git push origin development"  yazacagiz
+
+## bu komutun acilimi su sekildedir:
+## push gönder demek 
+## origin: nereye yani uzak repoya
+## development : bu isimde uzak repoda bir branch yok
+#               dolayisi ile yeni olusturacak
+
+## origin'in ne oldugunu su iki komut ile anlayabiliriz:
+
+## git branch -r : uzak repodaki branch leri görürüz
+
+## git remote -v : origin karsisinda bizim github url adresimiz cikar
+
+
+## push komutu calistirildiktan sonra, uzak repoda yani bir branch olusturuldu
+# ve github da "compare and pull request" secenegi cikacaktir
+
+# bunun cikma sebebi sudur: github bizim yenni bir branch olusturdugumuzu algiliyor
+## ve bu branch'i ana branch ile birlestirmemizi öneriyor
+
+
+# Not: eger pull request butonu otomatik olarak cikmazsa,
+# pull request seceneginden islem yapabiliriz 
+
+
+## simdi, github a gidip branch ler üzerindeki degisiklikleri detayli olarak 
+## inceleyebilirz. dev branch de olan degisiklikleri henüz main branch de göremeyiz 
+
+
+# simdi iki branch arasindaki farki ortadan kaldirmak icin compare ve pull request yapacagiz
+## yani bu islem su anlama geliyor:
+# biz bir sirket calisani olarak alt branch de calismamizi tamamladik ve
+# bu durumu project manager a bildiriyoruz ve bizim degisikliklerimizi
+# kontrol edip main branch'e pull etmesini talep eidyoruz 
+
+## Biz pull request gönderdikten sonra, project manager da "merge pull request"
+## butonu cikacaktir 
+
+## eger sikinti görmezse bizim talebimizi onaylacaktir
+## ve bundan sonra pull request sekmesindeki 1 sayisi ortadan kalkacaktir
+
+
+## Önemli: Biz su ana kadar remote repo daki branc lerimizin ikisini de güncelledik
+# yani ikisinde de su an en güncel bilgiler mevcut 
+
+## ancak burada meydana gelen degisiklikler lokal deki main branch imizde mevcut degil
+## Bu nedenle remote daki degisiklikleri main branch e pull ediyoruz 
+
+###############################################
+
+## simdi dev branch üzerinde register.html de bir degisiklik daha yapalim
+# ve daha sonra bunu main branch e gecerek merge edelim
+# main branch e gecis yaptigimizda, remote repo da main branch üzerinde 
+# degisiklikler oldugu v ebizim lokalimizdeki main'in remote dan geride 
+# oldugu bize bildirilecektir
+
+# bu nedenle öncelikle lokal deki main branch imizde pull islemi yapariz 
+# daha sonrasinda ise dev branch'i main'e merge edelim 
+# ve en sonunda da main branch'i remote'a push edelim 
+
+#######################################
+
+## Not: Su ana kadar yaptigimiz calismada, bizim remote da 
+# sadece 1 tane repomuz vardi. eger remote da ikinci bir repomuz olmus 
+## olsaydi ve pull islemini biz o repodan cekmek durumunda kalsaydik
+## o zaman su komutu kullanacaktik:
+
+## öncelikle:  git remote add "reponame" "httsp............. "
+
+# sonrasinda:  git pull reponame main (burada main bizim lokaldeki ana branchimiz)
+## yani uzak ... isimli uzak repodan lokal deki main e pull diyoruz
+
+
+#######################################
+
+## Not: calisma esnasinda her bir proje icin ayri bir repo 
+## olusturmak calisma acisindan cok kolaylik saglayacaktir
+# aksi takdirde karisikliklar meydana gelebilir
+
+
+
+######################################
+
+####   git ignore
+
+##  2S kuralindan dolayi yani "Size" ve "Security"
+# problemlerinden dolayi bazi dosyalarimizi remote göndermek
+# istemeyebiliriz (mesela sifrelerimizi iceren dosyalar)
+
+## Bu durumda push islemi esnasinda bu dosyalarimiz remote a gitmesin diye 
+# bunlari ".gitignore" isimli gizli dosya icerisine atariz 
+## Önemli: Bu dosyanin adi yanlis olursa calismaz
+
+
+## ignore ingilizce de ihmal etmek görmezden gelmek anlamina gelir 
+
+
+## örnegin mykey.pem adinda icerisinde sifrelerimizin oldugu bir dosyamiz olsun 
+## ve bunu remote repoya göndermek istemedigimizi varsayalim
+
+## simdi bu dosyalarimizi olusturalim:
+
+## ignore gizli dosyamizi ve mykey.pem dosyamizi olusturduktan sonra
+## gizli dosyamiz icerisine mykey.pem dosyamizin adini da yazarken
+## dikkat ediyoruz.
+
+# Not: Bizim dosyamiz ayri bir klasöre olmadigi icin direkt olarak ignore 
+# dosyamizi editör ile acarak kendi adini yazdik 
+## eger dosyamiz ayri bir klasör icerisinde olsaydi bu durumda 
+#  "klasöradi/dosyaadi" seklinde yazacaktik 
+
+## bu durumuda görmek icin bulundugumuz klasör iceriisnde sifre adinda
+# bir klasör olusturlim ve bu klasör icerisinde de "sifre.pem" adinda 
+# baska bir sifre dosyasi olusturalim 
+
+# sonrasinda bunun ismini .gitignore dosyamiza "sifre/sifre.pem" olarak ekleyelim 
+
+
+# tüm bu islemlerden sonra 
+# add ve commit yapalim 
+
+# ve push ile remote a gönderiyoruz
+
+## simdi github 'i kontrol ettigimizde, .gitignore isimli bir dosya 
+# oldugunu ve icerisinde bulunan dosya ve klasörlerin isimlerini görecegiz 
+# ancak bu dosya ve klasörlerin icerigini göremeyecegiz 
+
+
+###################################################
+
+## vs code
+
+#  vs code bir ide degildir bir editördür
+# ancak ide formatindadir
+
+
+#################################
+#  github dan repo clone lama :
+
+# bunun icin iki secemek vardir:
+
+## Birincisi close folder yaparak ana ekranda cikan clone repository 
+## butonuna tiklamaktir
+
+
+## ikincisi ise source butonuna tiklayarak orada bulunan clone repository butonuna 
+# tiklamaktir
+
+
+
+
+
+
+
+
+
